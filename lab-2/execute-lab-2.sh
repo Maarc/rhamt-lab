@@ -6,7 +6,7 @@
 
 CURRENT="$(pwd)"
 
-rm ${RHAMT_HOME}/rules/my*.xml
+rm -f ${RHAMT_HOME}/rules/my*.xml
 
 PACKAGES="com.rhc"
 INPUT="${CURRENT}/websphere-app-ear-1.0.0.ear"

@@ -7,7 +7,7 @@
 CURRENT="$(pwd)"
 
 #resets custom rules
-rm ${RHAMT_HOME}/rules/*.xml
+rm -f ${RHAMT_HOME}/rules/*.xml
 cp -f ${CURRENT}/*.xml ${RHAMT_HOME}/rules
 
 PACKAGES="com.rhc"

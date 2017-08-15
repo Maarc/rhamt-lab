@@ -6,7 +6,7 @@
 
 CURRENT="$(pwd)"
 
-rm ${RHAMT_HOME}/rules/my*.xml
+rm -f ${RHAMT_HOME}/rules/my*.xml
 
 PACKAGES="com.acme"
 INPUT="${CURRENT}/simple-sample-app.ear"
