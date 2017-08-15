@@ -1,0 +1,44 @@
+<ruleset xmlns="http://windup.jboss.org/schema/jboss-ruleset" id="environment-dependent-calls"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://windup.jboss.org/schema/jboss-ruleset
+http://windup.jboss.org/schema/jboss-ruleset/windup-jboss-ruleset.xsd">
+<rules>
+	<metadata>
+		<overrideRules>true</overrideRules>
+	</metadata>
+	<rule id="environment-dependent-calls-02000" xmlns="http://windup.jboss.org/schema/jboss-ruleset">
+            <when>
+                <javaclass as="default" references="javax.naming.Context.lookup{*}">
+                    <location>METHOD_CALL</location>
+                </javaclass>
+            </when>
+            <perform>
+                <iteration>
+                    <hint category-id="mandatory" effort="2" title="Call of JNDI lookup">
+                        <message>
+                           <![CDATA[
+                           This method lookups an object using a JNDI String. During the migration process, some entity JNDI bindings may change.
+                           Ensure that the JNDI Name does not need to change for JBoss
+
+                           *For Example:*
+
+                           ```java
+                           (ConnectionFactory)initialContext.lookup("weblogic.jms.ConnectionFactory");
+                           ```
+
+                           *should become:*
+
+                           ```java
+                           (ConnectionFactory)initialContext.lookup("/ConnectionFactory");
+                           ```
+                           ]]>
+                        </message>
+                        <link href="https://docs.jboss.org/author/display/AS71/JNDI+Reference" title="JBoss JNDI Reference"/>
+                        <tag>jndi</tag>
+                    </hint>
+                </iteration>
+            </perform>
+        </rule>
+</rules>
+</ruleset>
+

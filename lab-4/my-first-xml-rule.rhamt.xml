@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ruleset xmlns="http://windup.jboss.org/schema/jboss-ruleset" id="MyFirstXmlWindupRuleSet"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://windup.jboss.org/schema/jboss-ruleset http://windup.jboss.org/schema/jboss-ruleset/windup-jboss-ruleset.xsd">
+    <rules>
+        <!-- 
+            XML Rule Documentation: 
+            http://windup.github.io/windup/docs/latest/html/WindupRulesDevelopmentGuide.html#Rules-Create-Your-First-Rule 
+        -->
+        <rule id="MyFirstXmlWindupRule">
+            <when>
+                <xmlfile matches="//m:artifactId[text() = 'commons-logging' and ../m:version = '1.1']">
+                    <namespace prefix="m" uri="http://maven.apache.org/POM/4.0.0"/>
+                </xmlfile>
+            </when>
+            <perform>
+                <hint title="Depends on Commons Logging 1.1">
+                    <message>Replace Commons Logging 1.2, which is our corporate standard.</message>
+                </hint>
+            </perform>
+        </rule>
+        
+    </rules>
+</ruleset>

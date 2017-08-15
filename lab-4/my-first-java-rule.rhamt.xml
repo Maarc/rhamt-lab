@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<ruleset xmlns="http://windup.jboss.org/schema/jboss-ruleset" id="MyFirstJavaWindupRuleSet"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://windup.jboss.org/schema/jboss-ruleset http://windup.jboss.org/schema/jboss-ruleset/windup-jboss-ruleset.xsd">
+    <rules>
+        <!-- 
+            XML Rule Documentation: 
+            http://windup.github.io/windup/docs/latest/html/WindupRulesDevelopmentGuide.html#Rules-Create-Your-First-Rule 
+        -->
+        <rule id="MyUserIMPORTRule">
+            <when>
+                <javaclass references="com.rhc.booking.entities.User" as="default">
+                    <location>IMPORT</location>
+                    <!--
+                      http://windup.github.io/windup/docs/javadoc/latest/org/jboss/windup/rules/apps/java/scan/ast/TypeReferenceLocation.html
+                    -->
+                </javaclass>
+            </when>
+            <perform>
+                <!-- adding an inline hint -->
+                <iteration>
+                    <hint effort="1"><message>Importing deprecated User object. Replace with `com.rhc.booking.entities.Customer`.</message>
+                    </hint>
+                </iteration>
+            </perform>
+        </rule>
+
+        <rule id="MyUserConstructorRule">
+            <when>
+                <javaclass references="com.rhc.booking.entities.User({*})" as="default">
+                    <location>CONSTRUCTOR_CALL</location>
+                    <!--
+                      http://windup.github.io/windup/docs/javadoc/latest/org/jboss/windup/rules/apps/java/scan/ast/TypeReferenceLocation.html
+                    -->
+                </javaclass>
+            </when>
+            <perform>
+                <!-- adding an inline hint -->
+                <iteration>
+                    <hint effort="1"><message>Instantiating User.  Replace with `com.rhc.booking.entities.Customer`.</message>
+                    </hint>
+                </iteration>
+            </perform>
+        </rule>
+        
+    </rules>
+</ruleset>
