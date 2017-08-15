@@ -1,7 +1,6 @@
 package com.rhc.booking.services.impl;
 
 import java.rmi.RemoteException;
-import weblogic.servlet.annotation.WLInitParam;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -30,7 +29,6 @@ public class BookingServiceImpl implements SessionBean
     private NotificationServiceLocal notificationService;
     private EntityManager em;
 
-    @WLInitParam(value="12231")
     private String param;
     
     public Booking find(String confirmationId)
