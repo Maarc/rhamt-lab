@@ -3,3 +3,5 @@ bin
 *.ear
 *.war
 *.pdf
+report
+target
