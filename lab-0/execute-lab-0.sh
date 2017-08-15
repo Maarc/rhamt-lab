@@ -20,7 +20,7 @@ unzip dist/eap/jboss-eap-7.0.0.zip -d bin 2>&1 >> /dev/null
 echo "export JBOSS_HOME=$(pwd)/bin/jboss-eap-7.0" >> ~/.bashrc; source ~/.bashrc
 
 # Patch Red Hat JBoss EAP 7 to the latest version (should output “success” in a JSON structure)
-${JBOSS_HOME}/bin/jboss-cli.sh "patch apply $(pwd)/dist/eap/jboss-eap-7.0.5-patch.zip"
+${JBOSS_HOME}/bin/jboss-cli.sh "patch apply $(pwd)/dist/eap/jboss-eap-7.0.7-patch.zip"
 
 # Create an EAP admin user with password (change the user and password)
 ${JBOSS_HOME}/bin/add-user.sh -a -u ${EAP_ADMIN_USERNAME} -p ${EAP_ADMIN_PASSWORD}
