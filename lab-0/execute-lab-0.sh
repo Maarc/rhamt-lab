@@ -8,7 +8,7 @@ cd ..
 rm -Rf ./bin
 mkdir -p bin/jbds
 
-#############  Setup Red Hat JBoss EAP 7.0.5
+#############  Setup Red Hat JBoss EAP 7.0.7
 
 EAP_ADMIN_USERNAME='eapadmin'
 EAP_ADMIN_PASSWORD='verysimplebutlongpassword'
